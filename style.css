@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+i{
+    font-family: FontAwesome;
+    font-style: normal;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: rgb(0, 0, 0);
+}
+.container{
+    position: relative;
+    height: 500px;
+    width: 300px;
+    border: 10px solid inherit;
+    border-radius: 10px;
+}
+.card{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition: transform 1s ease-in-out;
+    transform-style: preserve-3d;
+}
+.card span{
+    box-shadow: 0px 0px 0px 0px #98e68e;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: 10px solid inherit;
+    border-radius: 10px;
+    animation: glow 0.5s ease-in-out  infinite alternate-reverse;
+}
+@keyframes glow{
+    0%{
+        box-shadow: 0px 0px 4px 0px #98e68e;
+    }
+    100%{
+        box-shadow: 0px 0px 12px 0px #98e68e;
+    }
+        
+}
+
+/* front div card */
+.card span:nth-of-type(1){
+    background-color: rgb(0, 0, 0);
+}
+.card span:nth-of-type(1){
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* back div card */
+.card span:nth-of-type(2){
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    /* this-->> transform: rotateY(180deg); is quite important bcz you 
+    have to flip front side of this back-div to the back side of front-div */
+}
+
+/* backface visibility is used to hide or visible one side of the div */
+/* for eg if you ar wriitng something on a transparent glass then you will able to see
+ the word that you write over two sides , on the other side
+ it  will have written opposite, now you can use property of backface-visibity:hidden
+ to hide the opposite side of the mirror
+ now if you hover the card you can only see front side of the card 
+*/
+.card span:nth-of-type(2)>img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+/* this is for pointer */
+.card span:nth-of-type(1)>i{
+    position: absolute;
+    top: 70%;
+    animation: pointer 1s ease-in-out  infinite alternate-reverse;
+}
+@keyframes pointer{
+    from{
+        top: 70%;
+    }
+    to{
+     top: 60%;
+    }
+}
